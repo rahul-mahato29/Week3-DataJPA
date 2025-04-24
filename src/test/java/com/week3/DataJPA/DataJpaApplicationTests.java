@@ -7,8 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 @SpringBootTest
 class DataJpaApplicationTests {
@@ -41,9 +41,23 @@ class DataJpaApplicationTests {
 //		List<ProductEntity> entities = productRepository.findByName("Laptop");
 //		System.out.println(entities);
 
-		List<ProductEntity> entities = productRepository.findByCreatedAtAfter(LocalDateTime.of(2025, 1, 1, 0, 0, 0));
-		System.out.println(entities);
+//		List<ProductEntity> entities = productRepository.findByQuantityAndPrice(10, BigDecimal.valueOf(1000));
+//		System.out.println(entities);
 
+//		List<ProductEntity> entities = productRepository.findByQuantityGreaterThanAndPriceLessThan(10, BigDecimal.valueOf(1000));
+//		System.out.println(entities);
+
+//		List<ProductEntity> entities = productRepository.findByNameLike("%am%"); //am - present anywhere in the name
+//		System.out.println(entities);
+
+//		List<ProductEntity> entities = productRepository.findByNameContaining("am"); //same as above, just we don't have to add "%" sign
+//		System.out.println(entities);
+
+//		List<ProductEntity> entities = productRepository.findByNameContainingIgnoreCase("LApt");
+//		System.out.println(entities);
+
+ 		Optional<ProductEntity> entities = productRepository.findByNameAndPrice("Chair", BigDecimal.valueOf(1000)); //same as above, just we don't have to add "%" sign
+		System.out.println(entities);
 	}
 
 }
