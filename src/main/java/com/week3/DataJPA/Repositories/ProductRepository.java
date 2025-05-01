@@ -37,4 +37,7 @@ public interface ProductRepository extends JpaRepository<ProductEntity, Long> {
 
     //Sorting - Using "Sort Class"
     List<ProductEntity> findBy(Sort sort);
+
+    //Pagination
+    List<ProductEntity> findAll();
 }
