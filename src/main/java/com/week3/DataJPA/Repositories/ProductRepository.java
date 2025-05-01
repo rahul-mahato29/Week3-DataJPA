@@ -1,6 +1,7 @@
 package com.week3.DataJPA.Repositories;
 
 import com.week3.DataJPA.entities.ProductEntity;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -28,4 +29,12 @@ public interface ProductRepository extends JpaRepository<ProductEntity, Long> {
     //custom query, this query is same as the above findByNameAndPrice() method
     @Query("select e from ProductEntity e where e.name=?1 and e.price=?2")
     Optional<ProductEntity> findByNameAndPrice(String name, BigDecimal price);
+
+    //Sorting
+    List<ProductEntity> findByOrderByPriceAsc();
+
+    List<ProductEntity> findByOrderByPriceDesc();
+
+    //Sorting - Using "Sort Class"
+    List<ProductEntity> findBy(Sort sort);
 }
