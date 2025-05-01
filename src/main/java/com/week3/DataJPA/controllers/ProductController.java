@@ -48,7 +48,11 @@ public class ProductController {
             @RequestParam(defaultValue = "0") Integer pageNumber
     ){
 
-        Pageable pageable = PageRequest.of(pageNumber, PAGE_SIZE);
+        Pageable pageable = PageRequest.of(
+                pageNumber,
+                PAGE_SIZE,
+                Sort.by(Sort.Direction.ASC, sortBy)
+        );
         return productRepository.findAll(pageable);
     }
 }
